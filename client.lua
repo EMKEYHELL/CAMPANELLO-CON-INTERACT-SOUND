@@ -1,11 +1,6 @@
-ESX = nil
+ESX = exports["es_extended"]:getSharedObject()
 
 Citizen.CreateThread(function()
-    while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(100)
-    end
-
     while true do
         Citizen.Wait(0)
         local playerPed = PlayerPedId()
@@ -18,7 +13,6 @@ Citizen.CreateThread(function()
             if distanza <= 2.0 then
                 nearCampanello = true
                 ESX.ShowHelpNotification('Premi ~INPUT_CONTEXT~ per suonare il campanello') -- Notifica ESX HelpText
-
 
                 -- Disegna il marker personalizzato (usando i valori dal config.lua)
                 DrawMarker(
